@@ -36,7 +36,7 @@ function Collection() {
   useEffect(() => {
     setCategoryId(params.categoryId);
     fetchproducts();
-  }, [params,sortBy]);
+  }, [params, sortBy]);
 
   const updatecategory = (e) => {
     navigate(`/category/${e.target.value}`);
@@ -99,7 +99,7 @@ function Collection() {
             </div>
           </div>
           <div className="products-box">
-            {products.map((product,id) => (
+            {products.map((product, id) => (
               <Product key={id} product={product} />
             ))}
           </div>
