@@ -1,0 +1,81 @@
+.Products {
+    cursor: pointer;
+    min-width: 280px;
+    flex: 1;
+    flex-grow: 0;
+    border: 1px solid rgba($color: #000000, $alpha: 0.1);
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+
+    .product-container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .product-img {
+            position: relative;
+            height: 300px;
+            width: 100%;
+
+            .img-container {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    transform: scale(0.9);
+                    transition: transform 0.2s ease; /* Add a transition */
+                }
+            }
+        }
+
+        .product-info {
+            text-align: center;
+            padding-inline: 8px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .title {
+                color: var(--primary-text-color);
+                font-weight: 700;
+                margin-block: 12px;
+                flex-grow: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .price {
+                color: var(--primary-text-color);
+                font-weight: 700;
+                margin-block: 12px;
+            }
+        }
+    }
+
+    &:hover .img-container #img {
+        /* Apply the transition on hover */
+        transform: scale(1.7);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .Products {
+        width: 48%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .Products {
+        width: 100%;
+    }
+}

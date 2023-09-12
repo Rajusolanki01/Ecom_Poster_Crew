@@ -1,0 +1,205 @@
+.Cart {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  display: flex;
+  justify-content: flex-end;
+  overflow-y: scroll;
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+  }
+
+  .cart-content {
+    height: auto;
+    max-height: 100vh;
+    width: 320px;
+    position: relative;
+    background-color: white;
+    animation: cartSlider 0.3s ease forwards;
+    transform: translateX(100%);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #ffffff;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: #fffcfc;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .header {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-inline: 8px;
+      border-bottom: 1px solid rgba($color: #000000, $alpha: 0.5);
+
+      .close-btn {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        cursor: pointer;
+        font-weight: 500;
+
+        &:hover {
+          opacity: 0.6;
+        }
+
+        &:active {
+          opacity: 1;
+        }
+      }
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      border-bottom: 1px solid rgba($color: #000000, $alpha: 0.5);
+
+      .item-image {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+      }
+
+      .item-details {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .item-title {
+        font-weight: bold;
+      }
+
+      .item-price {
+        color: var(--secondary-text-color);
+      }
+    }
+
+    .empty-cart-info {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 20px;
+      align-items: center;
+      justify-content: center;
+
+      .icon {
+        font-size: 3rem;
+        color: var(--secondary-text-color);
+      }
+
+      h4 {
+        color: var(--secondary-text-color);
+      }
+    }
+
+    .checkout-info {
+      margin-top: 40px;
+      padding: 8px;
+      border-top: 1px solid rgba($color: #000000, $alpha: 0.5);
+
+      .total-amount {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .checkout {
+        margin: 16px 8px;
+        text-align: center;
+      }
+      .Btn {
+        margin-inline: auto;
+        width: 180px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(15, 15, 15);
+        border: none;
+        color: white;
+        font-weight: 600;
+        gap: 15px;
+        cursor: pointer;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.103);
+        position: relative;
+        overflow: hidden;
+        transition-duration: 0.3s;
+
+        .svgIcon {
+          width: 18px;
+        }
+
+        .svgIcon path {
+          fill: white;
+        }
+
+        &::before {
+          width: 180px;
+          height: 130px;
+          position: absolute;
+          content: '';
+          background-color: white;
+          border-radius: 50%;
+          left: -100%;
+          top: 0;
+          transition-duration: 0.3s;
+          mix-blend-mode: difference;
+        }
+
+        &:hover::before {
+          transition-duration: 0.3s;
+          transform: translate(100%, -50%);
+          border-radius: 0;
+          background-color: #e0e0e0;
+        }
+
+        &:active {
+          transform: translate(5px, 5px);
+          transition-duration: 0.3s;
+          background-color: #000000;
+        }
+      }
+    }
+  }
+}
+
+@keyframes cartSlider {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .Cart {
+    .cart-content {
+      width: 100%;
+    }
+  }
+}
